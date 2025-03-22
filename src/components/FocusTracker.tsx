@@ -10,7 +10,7 @@ const FocusTracker: React.FC = () => {
   const [isFocused, setIsFocused] = useState(true);
   const [focusTime, setFocusTime] = useState(0);
   const [isTracking, setIsTracking] = useState(false);
-  const [lastUnfocusedTime, setLastUnfocusedTime] = useState(0);
+  const [unfocusedTime, setUnfocusedTime] = useState(0);
 
   useEffect(() => {
     const loadModel = async () => {
@@ -25,31 +25,28 @@ const FocusTracker: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
-    if (isTracking) {
-      interval = setInterval(async () => {
-        if (detector && webcamRef.current) {
-          const video = webcamRef.current.video;
-          if (video) {
-            const faces = await detector.estimateFaces(video);
-            const newIsFocused = faces.length > 0;
-            setIsFocused(newIsFocused);
-            
-            if (newIsFocused) {
-              setFocusTime(prev => prev + 1);
-              setLastUnfocusedTime(0);
-            } else {
-              setLastUnfocusedTime(prev => prev + 1);
-              if (lastUnfocusedTime >= 5) { // Alert after 5 seconds of unfocus
-                new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3').play();
-              }
-            }
-          }
+    if (!isTracking || !detector || !webcamRef.current?.video) return;
+
+    let interval = setInterval(async () => {
+      const video = webcamRef.current!.video;
+      const faces = await detector.estimateFaces(video!);
+      const newIsFocused = faces.length > 0;
+
+      setIsFocused(newIsFocused);
+
+      if (newIsFocused) {
+        setFocusTime(prev => prev + 1);
+        setUnfocusedTime(0);
+      } else {
+        setUnfocusedTime(prev => prev + 1);
+        if (unfocusedTime === 5) { // Alert after 5 seconds
+          new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3').play();
         }
-      }, 1000);
-    }
+      }
+    }, 1000);
+
     return () => clearInterval(interval);
-  }, [detector, isTracking, lastUnfocusedTime]);
+  }, [detector, isTracking, unfocusedTime]);
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -101,9 +98,9 @@ const FocusTracker: React.FC = () => {
               {isFocused ? 'Focused' : 'Distracted'}
             </span>
           </div>
-          {!isFocused && lastUnfocusedTime > 0 && (
+          {!isFocused && unfocusedTime > 0 && (
             <div className="text-red-500 text-sm">
-              You've been unfocused for {lastUnfocusedTime} seconds!
+              You've been unfocused for {unfocusedTime} seconds!
             </div>
           )}
         </div>

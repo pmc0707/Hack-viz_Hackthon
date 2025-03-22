@@ -1,0 +1,49 @@
+.container {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .card p {
+    font-size: 16px;
+    margin: 8px 0;
+  }
+  
+  .focused {
+    color: green;
+  }
+  
+  .distracted {
+    color: red;
+  }
+  
+  .reset-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  
+  .reset-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .chart-container {
+    margin-top: 20px;
+  }
+  

@@ -69,8 +69,6 @@ const FocusTracker = () => {
 
   return (
     <div className="container" onMouseEnter={() => setActive(true)} onMouseLeave={() => setActive(false)}>
-      <h1>Focus Tracker</h1>
-      
       <div className="card">
         <p>Focus Score: {focusScore}</p>
         <p>Idle Timer: {idleTime} sec / {idleThreshold} sec</p>
@@ -84,12 +82,17 @@ const FocusTracker = () => {
       
       <div className="chart-container">
         <h2>Focus & Distraction Trend</h2>
-        <LineChart width={600} height={300} data={focusData}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="time" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
+        <LineChart 
+          width={600} 
+          height={300} 
+          data={focusData} 
+          style={{ backgroundColor: '#000', borderRadius: '12px', padding: '16px' }}
+        >
+          <CartesianGrid stroke="#555" />
+          <XAxis dataKey="time" stroke="#fff" />
+          <YAxis stroke="#fff" />
+          <Tooltip contentStyle={{ backgroundColor: '#333', color: '#fff' }} />
+          <Legend wrapperStyle={{ color: '#fff' }} />
           <Line type="monotone" dataKey="focusTrend" stroke="#4c6ef5" name="Focus Trend" />
         </LineChart>
       </div>

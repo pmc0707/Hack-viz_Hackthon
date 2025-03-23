@@ -4,7 +4,7 @@ import { BookOpen, Brain, Clock } from 'lucide-react';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+    <div className="min-h-screen bg-gradient-to-r from-blue-400 to-purple-500">
       <header className="bg-white/80 backdrop-blur-sm sticky top-0 z-10 border-b border-indigo-100">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -12,7 +12,7 @@ function App() {
               <div className="bg-indigo-600 rounded-xl p-2">
                 <BookOpen className="w-6 h-6 text-white" />
               </div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 text-transparent bg-clip-text">
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
                 Focus Buddy
               </h1>
             </div>
@@ -26,17 +26,17 @@ function App() {
       
       <main className="max-w-7xl mx-auto px-4 py-12">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Stay Focused While Learning
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+        <h2 className="text-4xl font-bold text-white mb-4">
+          Stay Focused While Learning
+        </h2>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             We'll help you maintain focus and send gentle reminders when you get distracted
           </p>
         </div>
 
         {/* Feature Cards */}
         <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
+        <div className="bg-white/10 backdrop-blur-lg rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
             <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center text-indigo-600 mb-4">
               <Brain className="w-6 h-6" />
             </div>
@@ -47,7 +47,7 @@ function App() {
             <FocusTracker />
           </div>
 
-          <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
+          <div className="bg-white/10 backdrop-blur-lg rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
             <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center text-indigo-600 mb-4">
               <Clock className="w-6 h-6" />
             </div>

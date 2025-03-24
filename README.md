@@ -1,7 +1,8 @@
-🧠 Attention Problem
+🧠 Attention Problem:
+
 Attention Problem is a React application that utilizes @tensorflow-models/face-detection to track user attention based on facial detection. This project leverages TypeScript for type safety and lucide-react for modern UI icons.
 
-🚀 Features
+🚀 Features:
 🎭 Face Detection – Detects and tracks user faces in real time.
 
 👀 Attention Tracking – Monitors user attention using AI-powered face detection.
